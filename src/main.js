@@ -4,6 +4,7 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import App from './App'
 import router from 'router'
+import 'styles/index.scss'
 
 FastClick.attach(document.body)
 

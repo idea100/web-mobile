@@ -1,0 +1,13 @@
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.home .weui-search-bar:before {
+  border: none;
+}
+.home .weui-search-bar {
+  background-color: black;
+}
+
