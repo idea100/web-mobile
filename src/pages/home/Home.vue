@@ -1,94 +1,96 @@
 <template>
-  <view-box class="home">
+  <drawer>
     <x-header
       :left-options="{backText: '易库易'}"
       class="header"
       style=""
     ></x-header>
-    <div class="search-title">
+
+    <view-box class="home">
+      <div class="search-title">
       <span style="font-size: 22px; font-weight: bold;">
         <span style="color: red;">YKY</span>
         易库易
       </span>
-      <span>电子元器件全透明交易平台</span>
-    </div>
-    <sticky scroll-box="vux_view_box_body" ref="sticky" :offset="46" :check-sticky-support="false">
-      <search
-        position="relative"
-        :autoFixed="false"
-        ref="search"></search>
-    </sticky>
-
-    <div class="operation">
-      <div class="item" v-for="(item, index) in operateItems" :key="index">
-        <div class="item-img">
-          <img :src="item.src">
-        </div>
-        <div>{{ item.label }}</div>
+        <span>电子元器件全透明交易平台</span>
       </div>
-    </div>
+      <sticky scroll-box="vux_view_box_body" ref="sticky" :offset="46" :check-sticky-support="false">
+        <search
+          position="relative"
+          :autoFixed="false"
+          ref="search"></search>
+      </sticky>
 
-    <div class="row">
-      <swiper
-        :list="demo03_list"
-        auto style="width:100%; margin:0 auto;"
-        height="180px"
-        dots-class="custom-bottom"
-        dots-position="center">
-      </swiper>
-    </div>
-
-    <div class="row" style="padding-bottom: 20px;">
-      <div style="text-align: center; margin: 5px 0;">热销商品</div>
-
-      <div style="float: left; width: 50%;" v-for="item in 4">
-        <div style="text-align: center;">
-          <img style="width: 50%;" src="../../assets/009.png">
-        </div>
-        <div style="font-size: 14px; margin-left: 26px;">ADA48430-2BCPZ-R7</div>
-        <div style="font-size: 12px; margin-left: 26px;">Analog Devices Inc</div>
-        <div style="font-size: 14px; margin-left: 26px; color: red;">￥6.73827</div>
-      </div>
-      <div style="clear: both"></div>
-      <div style="text-align: center; margin: 15px 0;">
-        <span style="border: 1px solid #333; font-size: 14px; padding: 5px 10px;">更多商品&gt</span>
-      </div>
-    </div>
-
-    <div class="row" style="padding-bottom: 20px;">
-      <div style="text-align: center; font-size: 16px; padding-top: 20px; padding-bottom: 6px;">供应商列表</div>
-      <div style="text-align: center; font-size: 14px; padding-bottom: 30px; color: #333">纯授权分销商，一站式超级采购大平台</div>
-      <scroller lock-y :scrollbar-x=false>
-        <div class="box1">
-          <div class="box1-item" v-for="i in 7">
-            <span>{{'第' + i + '个供应商'}}</span>
+      <div class="operation">
+        <div class="item" v-for="(item, index) in operateItems" :key="index">
+          <div class="item-img">
+            <img :src="item.src">
           </div>
+          <div>{{ item.label }}</div>
         </div>
-      </scroller>
-      <div style="text-align: center; margin: 36px 0;">
-        <span style="border: 1px solid #333; font-size: 14px; padding: 5px 10px;">更多授权分销商&gt</span>
       </div>
-    </div>
 
-    <div class="row">
-      <div style="text-align: center;">易库易</div>
-      <div style="text-align: center;">供应链管理专家</div>
-      <div style="text-align: center;">独特的B2B支付方式</div>
-    </div>
+      <div class="row">
+        <swiper
+          :list="demo03_list"
+          auto style="width:100%; margin:0 auto;"
+          height="180px"
+          dots-class="custom-bottom"
+          dots-position="center">
+        </swiper>
+      </div>
+
+      <div class="row" style="padding-bottom: 20px;">
+        <div style="text-align: center; margin: 5px 0;">热销商品</div>
+
+        <div style="float: left; width: 50%;" v-for="item in 4">
+          <div style="text-align: center;">
+            <img style="width: 50%;" src="../../assets/009.png">
+          </div>
+          <div style="font-size: 14px; margin-left: 26px;">ADA48430-2BCPZ-R7</div>
+          <div style="font-size: 12px; margin-left: 26px;">Analog Devices Inc</div>
+          <div style="font-size: 14px; margin-left: 26px; color: red;">￥6.73827</div>
+        </div>
+        <div style="clear: both"></div>
+        <div style="text-align: center; margin: 15px 0;">
+          <span style="border: 1px solid #333; font-size: 14px; padding: 5px 10px;">更多商品&gt</span>
+        </div>
+      </div>
+
+      <div class="row" style="padding-bottom: 20px;">
+        <div style="text-align: center; font-size: 16px; padding-top: 20px; padding-bottom: 6px;">供应商列表</div>
+        <div style="text-align: center; font-size: 14px; padding-bottom: 30px; color: #333">纯授权分销商，一站式超级采购大平台</div>
+        <scroller lock-y :scrollbar-x=false>
+          <div class="box1">
+            <div class="box1-item" v-for="i in 7">
+              <span>{{'第' + i + '个供应商'}}</span>
+            </div>
+          </div>
+        </scroller>
+        <div style="text-align: center; margin: 36px 0;">
+          <span style="border: 1px solid #333; font-size: 14px; padding: 5px 10px;">更多授权分销商&gt</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="text-align: center;">易库易</div>
+        <div style="text-align: center;">供应链管理专家</div>
+        <div style="text-align: center;">独特的B2B支付方式</div>
+      </div>
+    </view-box>
 
     <tabbar>
       <tabbar-item v-for="(item, index) in tabbarItems" :key="index" :link="item.link">
         <img slot="icon" :src="item.src">
         <span slot="label">{{ item.label }}</span>
       </tabbar-item>
-
     </tabbar>
+  </drawer>
 
-  </view-box>
 </template>
 
 <script>
-import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller } from 'vux'
+import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer } from 'vux'
 
 const imgList = [
   './static/009.png',
@@ -134,7 +136,7 @@ const operateItems = [
 
 export default {
   components: {
-    XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper, Scroller
+    XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer
   },
   data () {
     return {
@@ -148,20 +150,19 @@ export default {
 
 <style scoped lang="scss">
   @import "~styles/base.scss";
+
+  .header {
+    background-color:#383c3e;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:100;
+  }
+
   .home {
-    padding-top: $head-height;
     box-sizing: border-box;
     background-color: #eff0f4;
-
-    .header {
-      background-color:#383c3e;
-      width:100%;
-      position:absolute;
-      left:0;
-      top:0;
-      z-index:100;
-    }
-
     .search-title {
       background-color: black;
       margin-bottom: -1px;
