@@ -4,10 +4,14 @@ html, body, #app {
   overflow-x: hidden;
 }
 
-.home .weui-search-bar:before {
-  border: none;
+.home, .detail {
+  .weui-search-bar:before {
+    border: none;
+  }
+
+  .weui-search-bar {
+    background-color: black;
+  }
 }
-.home .weui-search-bar {
-  background-color: black;
-}
+
 

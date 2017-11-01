@@ -43,7 +43,7 @@
       <div class="row" style="padding-bottom: 20px;">
         <div style="text-align: center; margin: 5px 0;">热销商品</div>
 
-        <div style="float: left; width: 50%;" v-for="item in 4">
+        <div style="float: left; width: 50%;" v-for="item in 4" @click="onDetailClick">
           <div style="text-align: center;">
             <img style="width: 50%;" src="../../assets/009.png">
           </div>
@@ -144,6 +144,11 @@ export default {
       tabbarItems,
       operateItems
     }
+  },
+  methods: {
+    onDetailClick () {
+      this.$router.push({ path: '/product' })
+    }
   }
 }
 </script>
@@ -163,6 +168,8 @@ export default {
   .home {
     box-sizing: border-box;
     background-color: #eff0f4;
+    padding-top: $head-height;
+
     .search-title {
       background-color: black;
       margin-bottom: -1px;
