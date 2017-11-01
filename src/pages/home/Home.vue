@@ -20,35 +20,12 @@
     </sticky>
 
     <div class="operation">
-
-      <div class="item">
+      <div class="item" v-for="(item, index) in operateItems" :key="index">
         <div class="item-img">
-          <img src="../../assets/005.png">
+          <img :src="item.src">
         </div>
-        <div>询价</div>
+        <div>{{ item.label }}</div>
       </div>
-
-      <div class="item">
-        <div class="item-img">
-          <img src="../../assets/006.png">
-        </div>
-        <div>订单追踪</div>
-      </div>
-
-      <div class="item">
-        <div class="item-img">
-          <img src="../../assets/007.png">
-        </div>
-        <div>分类</div>
-      </div>
-
-      <div class="item">
-        <div class="item-img">
-          <img src="../../assets/008.png">
-        </div>
-        <div>联系客服</div>
-      </div>
-
     </div>
 
     <div class="row">
@@ -61,73 +38,57 @@
       </swiper>
     </div>
 
-    <div class="row">
+    <div class="row" style="padding-bottom: 20px;">
       <div style="text-align: center; margin: 5px 0;">热销商品</div>
+
+      <div style="float: left; width: 50%;" v-for="item in 4">
+        <div style="text-align: center;">
+          <img style="width: 50%;" src="../../assets/009.png">
+        </div>
+        <div style="font-size: 14px; margin-left: 26px;">ADA48430-2BCPZ-R7</div>
+        <div style="font-size: 12px; margin-left: 26px;">Analog Devices Inc</div>
+        <div style="font-size: 14px; margin-left: 26px; color: red;">￥6.73827</div>
+      </div>
+      <div style="clear: both"></div>
+      <div style="text-align: center; margin: 15px 0;">
+        <span style="border: 1px solid #333; font-size: 14px; padding: 5px 10px;">更多商品&gt</span>
+      </div>
     </div>
 
+    <div class="row" style="padding-bottom: 20px;">
+      <div style="text-align: center; font-size: 16px; padding-top: 20px; padding-bottom: 6px;">供应商列表</div>
+      <div style="text-align: center; font-size: 14px; padding-bottom: 30px; color: #333">纯授权分销商，一站式超级采购大平台</div>
+      <scroller lock-y :scrollbar-x=false>
+        <div class="box1">
+          <div class="box1-item" v-for="i in 7">
+            <span>{{'第' + i + '个供应商'}}</span>
+          </div>
+        </div>
+      </scroller>
+      <div style="text-align: center; margin: 36px 0;">
+        <span style="border: 1px solid #333; font-size: 14px; padding: 5px 10px;">更多授权分销商&gt</span>
+      </div>
+    </div>
 
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
-    <div style="height: 50px;">123</div>
+    <div class="row">
+      <div style="text-align: center;">易库易</div>
+      <div style="text-align: center;">供应链管理专家</div>
+      <div style="text-align: center;">独特的B2B支付方式</div>
+    </div>
 
     <tabbar>
-      <tabbar-item>
-        <img slot="icon" src="../../assets/001.png">
-        <span slot="label">首页</span>
+      <tabbar-item v-for="(item, index) in tabbarItems" :key="index">
+        <img slot="icon" :src="item.src" :link="item.link">
+        <span slot="label">{{ item.label }}</span>
       </tabbar-item>
-      <tabbar-item>
-        <img slot="icon" src="../../assets/002.png">
-        <span slot="label">询报价</span>
-      </tabbar-item>
-      <tabbar-item>
-        <img slot="icon" src="../../assets/003.png">
-        <span slot="label">购物车</span>
-      </tabbar-item>
-      <tabbar-item link="/login">
-        <img slot="icon" src="../../assets/004.png">
-        <span slot="label">我的</span>
-      </tabbar-item>
+
     </tabbar>
 
   </view-box>
 </template>
 
 <script>
-import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper } from 'vux'
+import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller } from 'vux'
 
 const imgList = [
   './static/009.png',
@@ -140,13 +101,47 @@ const demoList = imgList.map((one, index) => ({
   img: one
 }))
 
+const tabbarItems = [
+  {
+    src: require('../../assets/001.png'),
+    label: '首页'
+  }, {
+    src: require('../../assets/002.png'),
+    label: '询报价'
+  }, {
+    src: require('../../assets/003.png'),
+    label: '购物车'
+  }, {
+    src: require('../../assets/004.png'),
+    label: '我的',
+    link: '/login'
+  }]
+
+const operateItems = [
+  {
+    src: require('../../assets/005.png'),
+    label: '询价'
+  }, {
+    src: require('../../assets/006.png'),
+    label: '订单追踪'
+  }, {
+    src: require('../../assets/007.png'),
+    label: '分类'
+  }, {
+    src: require('../../assets/008.png'),
+    label: '联系客服',
+    link: '/login'
+  }]
+
 export default {
   components: {
-    XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper
+    XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper, Scroller
   },
   data () {
     return {
-      demo03_list: demoList
+      demo03_list: demoList,
+      tabbarItems,
+      operateItems
     }
   }
 }
@@ -204,6 +199,29 @@ export default {
     .row {
       background-color: white;
       margin: 10px 0;
+
+      &:after {
+        @include cleanFloat;
+      }
+
+      .box1 {
+        height: 100px;
+        position: relative;
+        width: 1490px;
+      }
+      .box1-item {
+        width: 200px;
+        height: 100px;
+        background-color: #ccc;
+        display:inline-block;
+        margin-left: 15px;
+        float: left;
+        text-align: center;
+        line-height: 100px;
+      }
+      .box1-item:first-child {
+        margin-left: 0;
+      }
     }
 
   }
