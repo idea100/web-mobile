@@ -19,14 +19,34 @@
           position="relative"
           :autoFixed="false"
           ref="search"></search>
+        <tab :animate="false" v-model="selectedTab">
+          <tab-item active-class="active-tab" @on-item-click="onItemClick">商品详情</tab-item>
+          <tab-item active-class="active-tab" @on-item-click="onItemClick">商品信息</tab-item>
+          <tab-item active-class="active-tab" @on-item-click="onItemClick">规格参数</tab-item>
+        </tab>
       </sticky>
+
+      <div v-show="selectedTab === 0">
+        商品详情
+      </div>
+
+      <div v-show="selectedTab === 1">
+        商品信息
+      </div>
+
+      <div v-show="selectedTab === 2">
+        规格参数
+      </div>
 
     </view-box>
 
     <tabbar>
-      <tabbar-item v-for="(item, index) in tabbarItems" :key="index" :link="item.link">
-        <img slot="icon" :src="item.src">
-        <span slot="label">{{ item.label }}</span>
+      <tabbar-item class="item-card">
+        <span style="color: white;" slot="label">加入购物车</span>
+      </tabbar-item>
+
+      <tabbar-item class="item-xxx">
+        <span slot="label">询价</span>
       </tabbar-item>
     </tabbar>
   </drawer>
@@ -36,29 +56,18 @@
 <script>
   import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer } from 'vux'
 
-  const tabbarItems = [
-    {
-      src: require('../../assets/001.png'),
-      label: '首页'
-    }, {
-      src: require('../../assets/002.png'),
-      label: '询报价'
-    }, {
-      src: require('../../assets/003.png'),
-      label: '购物车'
-    }, {
-      src: require('../../assets/004.png'),
-      label: '我的',
-      link: '/login'
-    }]
-
   export default {
     components: {
       XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer
     },
     data () {
       return {
-        tabbarItems
+        selectedTab: 0
+      }
+    },
+    methods: {
+      onItemClick () {
+        console.log(1)
       }
     }
   }
@@ -76,6 +85,10 @@
     z-index:100;
   }
 
+  .item-card {
+    background-color: red;
+  }
+
   .detail {
     box-sizing: border-box;
     background-color: #eff0f4;
@@ -88,6 +101,11 @@
       text-align: center;
       box-sizing: border-box;
       padding: 15px 0;
+    }
+
+    .active-tab {
+      color: #FF9900 !important;
+      border-color: #FF9900 !important;
     }
   }
 </style>
