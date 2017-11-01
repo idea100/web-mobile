@@ -8,7 +8,7 @@
       <input type="password" placeholder="密码">
     </div>
     <div class="item xxx">
-      <x-button type="primary" link="/">登 录</x-button>
+      <x-button type="primary" @click.native="onLoginSuccess">登 录</x-button>
     </div>
     <div class="item" style="margin-top: -20px;">
       <span>还未注册？</span>
@@ -29,6 +29,12 @@
     methods: {
       onHrefClick (path) {
         this.$router.push({ path })
+      },
+      onLoginSuccess () {
+        this.$vux.alert.show({
+          title: '登录成功！',
+          onHide: () => this.$router.push({ path: '/' })
+        })
       }
     }
   }

@@ -1,6 +1,9 @@
 <template>
   <view-box class="login">
     <div class="logo">YKY</div>
+    <div class="item" style="margin-top : -5px; margin-bottom: -20px; font-size: 14px; color: #999;">
+      <span>输入手机号码和验证码重置密码</span>
+    </div>
     <div class="item">
       <input type="text" placeholder="账号">
     </div>
@@ -12,14 +15,7 @@
       <input type="password" placeholder="密码">
     </div>
     <div class="item xxx">
-      <x-button type="primary" @click.native="onRegister">注 册</x-button>
-    </div>
-    <div class="item" style="margin-top: -20px; font-size: 14px;">
-      <span>点击注册即表示同意易库易<span style="color: #199dd7">用户注册</span>协议和<span style="color: #199dd7">交易条款</span></span>
-    </div>
-    <div class="item bottom">
-      <span>已有账号？</span>
-      <a href="javascript: void 0" class="href-btn" @click="onHrefClick('/login')">登录</a>
+      <x-button type="primary" @click.native="onModify">重置密码</x-button>
     </div>
   </view-box>
 </template>
@@ -36,9 +32,9 @@
       onHrefClick (path) {
         this.$router.push({ path })
       },
-      onRegister () {
+      onModify () {
         this.$vux.alert.show({
-          title: '注册成功！',
+          title: '密码修改成功！',
           onHide: () => this.$router.push({ path: '/login' })
         })
       },
@@ -102,15 +98,6 @@
 
     .href-btn {
       color: #199dd7;
-    }
-
-    .bottom {
-      position: absolute;
-      bottom: 0;
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-      left: 0;
     }
   }
 </style>
