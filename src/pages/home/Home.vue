@@ -77,8 +77,8 @@
     </div>
 
     <tabbar>
-      <tabbar-item v-for="(item, index) in tabbarItems" :key="index">
-        <img slot="icon" :src="item.src" :link="item.link">
+      <tabbar-item v-for="(item, index) in tabbarItems" :key="index" :link="item.link">
+        <img slot="icon" :src="item.src">
         <span slot="label">{{ item.label }}</span>
       </tabbar-item>
 
@@ -129,8 +129,7 @@ const operateItems = [
     label: '分类'
   }, {
     src: require('../../assets/008.png'),
-    label: '联系客服',
-    link: '/login'
+    label: '联系客服'
   }]
 
 export default {
