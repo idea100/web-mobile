@@ -7,13 +7,6 @@
     ></x-header>
 
     <view-box class="detail">
-      <div class="search-title">
-      <span style="font-size: 22px; font-weight: bold;">
-        <span style="color: red;">YKY</span>
-        易库易
-      </span>
-        <span>电子元器件全透明交易平台</span>
-      </div>
       <sticky scroll-box="vux_view_box_body" ref="sticky" :offset="46" :check-sticky-support="false">
         <search
           position="relative"
@@ -26,56 +19,81 @@
         </tab>
       </sticky>
 
-      <div v-show="selectedTab === 0">
-        商品详情
-      </div>
-
-      <div v-show="selectedTab === 1">
-        商品信息
-      </div>
-
-      <div v-show="selectedTab === 2">
-        规格参数
-      </div>
+      <component :is="tabContent"></component>
 
     </view-box>
 
     <tabbar>
-      <tabbar-item class="item-card">
+      <tabbar-item class="item-card" @on-item-click="onTabbarItemClick1">
         <span style="color: white;" slot="label">加入购物车</span>
       </tabbar-item>
 
-      <tabbar-item class="item-xxx">
+      <tabbar-item class="item-xxx" @on-item-click="onTabbarItemClick2">
         <span slot="label">询价</span>
       </tabbar-item>
     </tabbar>
+
+    <div v-transfer-dom>
+      <popup v-model="show" @on-hide="log('hide')" @on-show="log('show')">
+        <div class="popup0">
+          <div style="margin: 10px; font-size: 20px; text-align: center; margin-top: 30px;">很贵哦，你确定要购买？</div>
+        </div>
+
+        <div class="item xxx">
+          <x-button type="primary" @click.native=" show = false ">不 care</x-button>
+        </div>
+      </popup>
+    </div>
+
   </drawer>
 
 </template>
 
 <script>
-  import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer } from 'vux'
+  import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer, Popup, TransferDom, XButton } from 'vux'
+  import ProductDetail from './product-detail'
+  import ProductInfo from './product-info'
+  import ProductParam from './product-param'
 
   export default {
     components: {
-      XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer
+      XHeader, Tab, TabItem, Sticky, ViewBox, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer, Popup, XButton
+    },
+    directives: {
+      TransferDom
     },
     data () {
       return {
-        selectedTab: 0
+        selectedTab: 0,
+        show: false
+      }
+    },
+    computed: {
+      tabContent () {
+        return this.selectedTab === 0 ? ProductDetail : this.selectedTab === 1 ? ProductInfo : ProductParam
       }
     },
     methods: {
       onItemClick () {
         console.log(1)
+      },
+      onTabbarItemClick1 () {
+        this.show = true
+      },
+      onTabbarItemClick2 () {
+        this.$vux.alert.show({
+          title: 'don\'t click me, ok！'
+        })
+      },
+      log (info) {
+        console.log(info)
       }
     }
   }
 </script>
 
-<style scoped lang="scss">
-  @import "~styles/base.scss";
-
+<style scoped lang="less">
+  @import "~vux/src/styles/close.less";
   .header {
     background-color:#383c3e;
     width:100%;
@@ -85,6 +103,11 @@
     z-index:100;
   }
 
+  .popup0 {
+    padding-bottom:15px;
+    height:400px;
+  }
+
   .item-card {
     background-color: red;
   }
@@ -92,7 +115,7 @@
   .detail {
     box-sizing: border-box;
     background-color: #eff0f4;
-    padding-top: $head-height;
+    padding-top: 46px;
 
     .search-title {
       background-color: black;
