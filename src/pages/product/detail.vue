@@ -36,11 +36,11 @@
     <div v-transfer-dom>
       <popup v-model="show" @on-hide="log('hide')" @on-show="log('show')">
         <div class="popup0">
-          <div style="margin: 10px; font-size: 20px; text-align: center; margin-top: 30px;">很贵哦，你确定要购买？</div>
+          <div style="margin: 10px; font-size: 20px; text-align: center; margin-top: 30px;">成功添加商品</div>
         </div>
 
         <div class="item xxx">
-          <x-button type="primary" @click.native=" show = false ">不 care</x-button>
+          <x-button type="primary" @click.native=" show = false ">我知道了</x-button>
         </div>
       </popup>
     </div>
