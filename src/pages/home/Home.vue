@@ -63,7 +63,7 @@
         <scroller lock-y :scrollbar-x=false>
           <div class="box1">
             <div class="box1-item" v-for="i in 7">
-              <span>{{'第' + i + '个供应商'}}</span>
+              <span>{{'供应商' + i + '(左右滑动)'}}</span>
             </div>
           </div>
         </scroller>
