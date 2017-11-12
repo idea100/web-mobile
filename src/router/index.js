@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from 'pages/home'
-import Login, { Register, ModifyPassword } from 'pages/login'
-import Product from 'pages/product'
 
 Vue.use(Router)
 
@@ -10,23 +7,37 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      component: require('pages/home').default,
+      children: [
+        {
+          path: '',
+          redirect: 'product'
+        },
+        {
+          path: 'product',
+          component: require('pages/product').default
+        },
+        {
+          path: 'quotation',
+          component: require('pages/quotation').default
+        },
+        {
+          path: 'shopping',
+          component: require('pages/shopping').default
+        },
+        {
+          path: 'user',
+          component: require('pages/user').default
+        }
+      ]
     },
     {
       path: '/login',
-      component: Login
-    },
-    {
-      path: '/register',
-      component: Register
-    },
-    {
-      path: '/modify-password',
-      component: ModifyPassword
-    },
-    {
-      path: '/product',
-      component: Product
+      component: require('pages/login').default
     }
   ]
 })

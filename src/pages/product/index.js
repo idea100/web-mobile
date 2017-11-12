@@ -1,3 +1,3 @@
-import Detail from './detail'
+import Product from './product'
 
-export default Detail
+export default Product

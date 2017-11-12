@@ -1,11 +1,11 @@
 <template>
   <div>
-    这个是登录注册页面
+    这个是首页
   </div>
 </template>
 
 <script>
   export default {
-    name: 'login'
+    name: 'product'
   }
 </script>
