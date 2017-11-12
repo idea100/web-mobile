@@ -90,6 +90,7 @@
 </template>
 
 <script>
+import { fetchUserInfo } from 'service'
 import { ViewBox, XHeader, Tab, TabItem, Sticky, Search, Tabbar, TabbarItem, Swiper, Scroller, Drawer } from 'vux'
 
 const imgList = [
@@ -144,6 +145,11 @@ export default {
       tabbarItems,
       operateItems
     }
+  },
+  mounted () {
+    fetchUserInfo()
+      .then(resp => console.log(resp))
+      .catch(e => console.log(e))
   },
   methods: {
     onDetailClick () {
